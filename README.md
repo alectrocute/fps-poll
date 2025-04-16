@@ -1,106 +1,53 @@
-# Typescript NPM Package Starter
-My template for creating npm packages using typescript.
+# FPS Poll
 
-- TS to JS
-- Testing via Jest, includes coverage
-- ESLint
-- Ignore files to ensure minimal code is stored/shipped
+A lightweight TypeScript library for monitoring frame rate performance in web applications.
 
-NPM link: [@el3um4s/typescript-npm-package-starter](https://www.npmjs.com/package/@el3um4s/typescript-npm-package-starter)
+## Features
 
-### Getting Started
+- Monitor FPS (Frames Per Second) in real-time
+- Configurable polling duration and threshold
+- Callback-based notifications for performance issues
+- Zero dependencies
+- TypeScript support
 
-To create a new project based on this template using degit:
-
-```bash
-npx degit el3um4s/typescript-npm-package-starter
-```
-
-Then install the dependencies with
+## Installation
 
 ```bash
-npm install
+npm install fps-poll
 ```
 
-Now update the name field in package.json with your desired package name. Then update the homepage field in package.json. And finally add your code.
+## Usage
 
-### Build the package
+```typescript
+import { fpsPoll } from 'fps-poll';
 
-Run
-
-```bash
-npm run build
+fpsPoll({
+    fpsThreshold: 30, // Alert when FPS drops below this value
+    pollAmount: 100,  // Number of frames to measure
+    onBelowThreshold: (avg) => {
+        console.log(`Performance warning: FPS dropped to ${avg}`);
+    },
+    onStartPolling: () => {
+        console.log('Started monitoring FPS');
+    },
+    onEndPolling: (avg) => {
+        console.log(`Average FPS: ${avg}`);
+    }
+});
 ```
 
-### Test the package
+## API
 
-You can test the code with [Jest](https://jestjs.io/)
+### `fpsPoll(options: FPSPollOptions)`
 
-```bash
-npm test
-```
+#### Options
 
-You can find the test coverage in `coverage/lcov-report/index.html`.
+- `fpsThreshold` (optional): Number - Minimum acceptable FPS (default: 30)
+- `pollAmount` (optional): Number - Number of frames to measure (default: 100)
+- `onBelowThreshold` (optional): Function - Callback when FPS drops below threshold
+- `onStartPolling` (optional): Function - Callback when polling starts
+- `onEndPolling` (optional): Function - Callback when polling ends
 
-### Check dependencies
+## License
 
-You can check and upgrade dependencies to the latest versions, ignoring specified versions. with [npm-check-updates](https://www.npmjs.com/package/npm-check-updates):
-
-```bash
-npm run check-updates
-```
-
-You can also use `npm run check-updates:minor` to update only patch and minor.
-
-Instead `npm run check-updates:patch` only updates patch.
-
-### Publish
-
-First commit the changes to GitHub. Then login to your [NPM](https://www.npmjs.com) account (If you don’t have an account you can do so on [https://www.npmjs.com/signup](https://www.npmjs.com/signup))
-
-```bash
-npm login
-```
-
-Then run publish:
-
-```bash
-npm publish
-```
-
-If you're using a scoped name use:
-
-```bash
-npm publish --access public
-```
-
-### Bumping a new version
-
-To update the package use:
-
-```bash
-npm version patch
-```
-
-and then
-
-```bash
-npm publish
-```
-
-### Install and use the package
-
-To use the package in a project:
-
-```bash
-npm i @el3um4s/typescript-npm-package-starter
-```
-
-and then in a file:
-
-```ts
-import { ciao } from "@el3um4s/typescript-npm-package-starter";
-
-const b = ciao("mondo");
-console.log(b); // Ciao Mondo
-```
+Apache License
