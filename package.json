@@ -1,0 +1,52 @@
+{
+  "name": "fps-poll",
+  "version": "1.0.0",
+  "description": "A simple TypeScript utility for the browser to poll the page's current framerate",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags",
+    "check-updates": "npx npm-check-updates",
+    "check-updates:minor": "npx npm-check-updates --target minor",
+    "check-updates:patch": "npx npm-check-updates --target patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alectrocute/fps-poll.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "keywords": [
+    "fps",
+    "performance",
+    "dom",
+    "browser",
+    "ts"
+  ],
+  "author": "Alec Armbruster <alectrocute@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/alectrocute/fps-poll/issues"
+  },
+  "homepage": "https://github.com/alectrocute/fps-poll#readme",
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "ansi-regex": ">=6.0.1",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^4.9.5"
+  }
+}
