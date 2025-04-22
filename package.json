@@ -1,6 +1,6 @@
 {
   "name": "fps-poll",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple TypeScript utility for the browser to poll the page's current framerate",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
